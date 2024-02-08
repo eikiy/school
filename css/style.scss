@@ -190,10 +190,19 @@ $min-w: 320px;
     text-overflow: ellipsis;
     transition: all 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms;
 
+    &:disabled {
+      color: #555;
+      background-color: #EAEAEA;
+      border-color: #d8d8d8;
+      opacity: 1;
+    }
+    
     &:hover {
       border-color: $color-main-blue;
     }
-
+    &:disabled:hover {
+      border-color: #d8d8d8;
+    }
     &::-ms-expand {
       display: none;
     }
@@ -211,6 +220,7 @@ $min-w: 320px;
     }
   }
 }
+
 
 input.default,
 textarea.default {
@@ -234,13 +244,11 @@ textarea.default {
   }
 
   &:disabled {
-    color: #9E9E9E;
-  }
-
-  @media all and (max-width: 500px) {
-    padding: 0 15px;
+    color: #555;
+    background-color: #EAEAEA;
   }
 }
+
 textarea.default{
   min-height: 240px;
   padding: 20px;
@@ -877,6 +885,10 @@ main{
     background-image: url(../images/svg/icon_otherclass_add.svg);
     background-size: 75%;
   }
+  .icon-class-add{
+    background-image: url(../images/svg/icon_class_add.svg);
+    background-size: 75%;
+  }
   .icon-feed-add{
     background-image: url(../images/svg/icon_feed_add.svg);
     background-size: 75%;
@@ -933,6 +945,10 @@ main{
         font-size: $f-size-l;
         font-weight: bold;
       }
+    }
+    &.text-center{
+      color: $color-black;
+      text-align: center;
     }
   }
   .btn-primary-xl {
@@ -1022,8 +1038,6 @@ main{
 
 .mid-content {
   @include max-box-width;
-  // @include bg-box-w;
-  // margin: 50px auto 70px auto;
 }
 
 .mid-cont-transparent {
@@ -1104,63 +1118,6 @@ main{
       @media all and (max-width: 500px) {
         .a-row p.fl-r {
           font-size: $f-size-s;
-        }
-      }
-    }
-
-    &.cancel-form {
-      max-width: 640px;
-
-      .default {
-        margin-bottom: 10px;
-      }
-
-      .both-btn {
-        padding: 0;
-      }
-    }
-
-    &.add-credit-card {
-      ul.card-icons {
-        display: flex;
-        flex-wrap: wrap;
-        padding-bottom: 10px;
-
-        li {
-          display: flex;
-          width: 40px;
-          margin-right: 15px;
-
-          img {
-            width: 100%;
-          }
-        }
-      }
-
-      .a-row .fl {
-        display: flex;
-        align-items: center;
-
-        label {
-          padding-right: 10px;
-        }
-      }
-
-      .fl {
-        display: flex;
-        flex-wrap: wrap;
-        align-items: flex-start;
-
-        .w1 {
-          flex: 1;
-
-          &:nth-child(1) {
-            padding-right: 5px;
-          }
-
-          &:nth-child(2) {
-            padding-left: 5px;
-          }
         }
       }
     }
@@ -1267,6 +1224,13 @@ main{
       flex: calc(50% - 5px);
       &.fl-100{
         flex: 100%;
+        .icon{
+          padding: 6px 5px 6px 28px;
+          &::before{
+            left: 22px;
+            top: calc(50% - 12px);
+          }
+        }
       }
       &.bg-yello{
         a{
@@ -1275,11 +1239,96 @@ main{
           background-color: $color-yello;
         }
       }
+      &.bg-w{
+        a{
+          opacity: 1;
+          color: #444;
+          background-color:#fff;
+        }
+      }
     }
   }
 }
 
-
+.circle-color{
+  display: flex;
+  align-items: center;
+  padding-top: 10px;
+  li{
+    display: flex;
+    justify-content: center;
+    flex: 1;
+    cursor: pointer;
+    padding: 5px;
+    .circle{
+      width: 15px;
+      height: 15px;
+      border-radius: 50%;
+      display: block;
+    }
+    &:nth-child(1){
+      .circle{
+        background-color: #F45055;
+      }
+    }
+    &:nth-child(2){
+      .circle{
+        background-color: #FF887C;
+      }
+    }
+    &:nth-child(3){
+      .circle{
+        background-color: #F0A25C;
+      }
+    }
+    &:nth-child(4){
+      .circle{
+        background-color: #F0CF5D;
+      }
+    }
+    &:nth-child(5){
+      .circle{
+        background-color: #51B749;
+      }
+    }
+    &:nth-child(6){
+      .circle{
+         background-color: #65E0B3;
+      }
+    }
+    &:nth-child(7){
+      .circle{
+        background-color: #46D6DB;
+      }
+    }
+    &:nth-child(8){
+      .circle{
+        background-color: #509BF8;
+      }
+    }
+    &:nth-child(9){
+      .circle{
+        background-color: #A4BDFC;
+      }
+    }
+    &:nth-child(10){
+      .circle{
+        background-color: #D1ACEE;
+      }
+    }
+    &.btn-in{
+      padding:0 10px;
+      .circle{
+        width: 25px;
+        height: 25px;
+        outline-style: solid;
+        outline-color: #fff;
+        outline-width: 5px;
+        @include has-box-shadow;
+      }
+    }
+  }
+}
 .main-wrap{
   .icon-add-plus{
     position: fixed;
@@ -1318,6 +1367,14 @@ main{
     padding-top: 0;
     .the-select{
       margin-bottom: 10px;
+    }
+  }
+  .student-content{
+    padding: 0;
+    .many{
+      input{
+        margin-bottom: 10px;
+      }
     }
   }
   .top-card-year{
@@ -1424,6 +1481,22 @@ main{
             background-color: #FFE459;
             border-radius: 6px;
           }
+        }
+      }
+    }
+    .no-circle{
+      padding-left: 10px;
+      &::before {
+        display: none;
+      }
+      .class-year{
+        font-size: $f-size-l;
+        padding-top: 10px;
+      }
+      .classroom{
+        font-size: $f-size-s;
+        span::after{
+          top: 3px;
         }
       }
     }
@@ -1600,6 +1673,74 @@ main{
       }
     }
   }
+  .student-list{
+    width: 100%;
+    border-radius: $radius-m;
+    background-color: #fff;
+    overflow-y: auto;
+    padding-bottom: 20px;
+    @include has-box-shadow;
+    max-height: calc(100vh - 160px) ;
+    li{
+      align-items: center;
+      display: flex;
+      position: relative;
+      width: 100%;
+      background-color: #fff;
+      padding:10px 10px 10px 40px;
+      border-bottom: 1px solid #DCDCDC;
+      cursor: pointer;
+      &.icon-star::before{
+        left: 15px;
+        width: 13px;
+      }
+      p{
+        line-height: 1.5;
+        font-size: $f-size-s;
+        color: $color-gray;
+      }
+      .name{
+        color: $color-black;
+        font-size: $f-size-m;
+        width: 35%;
+        font-weight: bold;
+      }
+      .school{
+        width: 35%;
+        padding-left: 5px;
+      }
+      .otherclass{
+        width: 25%;
+        padding: 0 5px;
+        font-size: $f-size-ss;
+      }
+      .icon-edit{
+        margin-left: auto;
+        width: 30px;
+        height: 30px;
+        background-image: url(../images/svg/icon_edit.svg);
+        @include img-default;
+        background-size: 55%;
+        filter: grayscale(100%);
+        opacity: .5;
+        &:active {
+          opacity: 1;
+          filter: initial;
+        }
+      }
+    }
+    .input-search{
+      position: sticky;
+      top: 0;
+      z-index: 2;
+      padding: 0;
+      border-color: #b6b6b6;
+      input{
+        border: none;
+        border-radius: 0;
+      }
+    }
+  }
   .icon-return{
     li{
       &::after{
@@ -1638,8 +1779,210 @@ main{
       }
     }
   }
+  // 給下方 tools 位置用
   .pa-b-75{
     padding-bottom: 75px;
+  }
+  // 只有我的班級-卡片底色用
+  // 預設
+  .color-default{
+    .a-card{
+      background-color: $color-main-blue;
+    }
+  }
+  // 漸層
+  .color-gradient{
+    .a-card{      
+      &:nth-child(1n+1){
+        background-color: #F45055;
+        .tools-btns a.icon{
+          color: #F45055;
+          &.icon.icon-score::before{
+            background-image: url(../images/svg/tools_icon_score_01.svg);
+          }
+        }
+      }
+      &:nth-child(2n+2){
+        background-color: #FF887C;
+        .tools-btns a.icon{
+          color: #FF887C;
+          &.icon.icon-score::before{
+            background-image: url(../images/svg/tools_icon_score_02.svg);
+          }
+        }
+      }
+      &:nth-child(3n+3){
+        background-color: #F0A25C;
+        .tools-btns a.icon{
+          color: #F0A25C;
+          &.icon.icon-score::before{
+            background-image: url(../images/svg/tools_icon_score_03.svg);
+          }
+        }
+      }
+      &:nth-child(4n+4){
+        background-color: #F0CF5D;
+        .tools-btns a.icon{
+          color: #F0CF5D;
+          &.icon.icon-score::before{
+            background-image: url(../images/svg/tools_icon_score_04.svg);
+          }
+        }
+      }
+      &:nth-child(5n+5){
+        background-color: #51B749;
+        .tools-btns a.icon{
+          color: #51B749;
+          &.icon.icon-score::before{
+            background-image: url(../images/svg/tools_icon_score_05.svg);
+          }
+        }
+      }
+      &:nth-child(6n+6){
+        background-color: #65E0B3;
+        .tools-btns a.icon{
+          color: #65E0B3;
+          &.icon.icon-score::before{
+            background-image: url(../images/svg/tools_icon_score_06.svg);
+          }
+        }
+      }
+      &:nth-child(7n+7){
+        background-color: #46D6DB;
+        .tools-btns a.icon{
+          color: #46D6DB;
+          &.icon.icon-score::before{
+            background-image: url(../images/svg/tools_icon_score_07.svg);
+          }
+        }
+      }
+      &:nth-child(8n+8){
+        background-color: #509BF8;
+        .tools-btns a.icon{
+          color: #509BF8;
+          &.icon.icon-score::before{
+            background-image: url(../images/svg/tools_icon_score_08.svg);
+          }
+        }
+      }
+      &:nth-child(9n+9){
+        background-color: #A4BDFC;
+        .tools-btns a.icon{
+          color: #A4BDFC;
+          &.icon.icon-score::before{
+            background-image: url(../images/svg/tools_icon_score_09.svg);
+          }
+        }
+      }
+      &:nth-child(10n+10){
+        background-color: #D1ACEE;
+        .tools-btns a.icon{
+          color: #D1ACEE;
+          &.icon.icon-score::before{
+            background-image: url(../images/svg/tools_icon_score_10.svg);
+          }
+        }
+      }
+    }
+  }
+  // 自選
+  .optional-c01{
+    background-color: #F45055;
+    .tools-btns a.icon{
+      color: #F45055;
+      &.icon.icon-score::before{
+        background-image: url(../images/svg/tools_icon_score_01.svg);
+      }
+    }
+  }
+  .optional-c02{
+    background-color: #FF887C;
+    .tools-btns a.icon {
+      color: #FF887C;
+      &.icon.icon-score::before {
+        background-image: url(../images/svg/tools_icon_score_02.svg);
+      }
+    }
+  }
+
+  .optional-c03{
+    background-color: #F0A25C;
+    .tools-btns a.icon {
+      color: #F0A25C;
+      &.icon.icon-score::before {
+        background-image: url(../images/svg/tools_icon_score_03.svg);
+      }
+    }
+  }
+
+  .optional-c04{
+    background-color: #F0CF5D;
+    .tools-btns a.icon {
+      color: #F0CF5D;
+      &.icon.icon-score::before {
+        background-image: url(../images/svg/tools_icon_score_04.svg);
+      }
+    }
+  }
+
+  .optional-c05{
+    background-color: #51B749;
+    .tools-btns a.icon {
+      color: #51B749;
+      &.icon.icon-score::before {
+        background-image: url(../images/svg/tools_icon_score_05.svg);
+      }
+    }
+  }
+
+  .optional-c06{
+    background-color: #65E0B3;
+    .tools-btns a.icon {
+      color: #65E0B3;
+      &.icon.icon-score::before {
+        background-image: url(../images/svg/tools_icon_score_06.svg);
+      }
+    }
+  }
+
+  .optional-c07{
+    background-color: #46D6DB;
+    .tools-btns a.icon {
+      color: #46D6DB;
+      &.icon.icon-score::before {
+        background-image: url(../images/svg/tools_icon_score_07.svg);
+      }
+    }
+  }
+
+  .optional-c08{
+    background-color: #509BF8;
+    .tools-btns a.icon {
+      color: #509BF8;
+      &.icon.icon-score::before {
+        background-image: url(../images/svg/tools_icon_score_08.svg);
+      }
+    }
+  }
+
+  .optional-c09{
+    background-color: #A4BDFC;
+    .tools-btns a.icon {
+      color: #A4BDFC;
+      &.icon.icon-score::before {
+        background-image: url(../images/svg/tools_icon_score_09.svg);
+      }
+    }
+  }
+
+  .optional-c10{
+    background-color: #D1ACEE;
+    .tools-btns a.icon {
+      color: #D1ACEE;
+      &.icon.icon-score::before {
+        background-image: url(../images/svg/tools_icon_score_10.svg);
+      }
+    }
   }
 }
 
@@ -1704,14 +2047,5 @@ main{
   }
   .a-row{
     margin-bottom: 10px;
-  }
-  .both-btn {
-    padding: 25px 15px 15px 15px;
-  }
-
-  @media all and (max-width: 500px) {
-    .both-btn {
-      padding: 15px 0px;
-    }
   }
 }
